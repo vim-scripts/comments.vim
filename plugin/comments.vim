@@ -183,7 +183,7 @@ function! UnCommentLine()
   elseif file_name =~ '\.ml$' || file_name =~ '\.mli$'
     execute ":silent! normal :nohlsearch\<CR>:s/(\\*//\<CR>:nohlsearch\<CR>"
 	execute ":silent! normal :nohlsearch\<CR>:s/\\*)//\<CR>:nohlsearch\<CR>=="
-  " for .c or .h or .pc or .css files use /* */
+  " for .c or .h or .pc or .css or rs files use /* */
   elseif file_name =~ '\.c$' || file_name =~ '\.h$' || file_name =~ '\.pc$' || file_name =~ '\.css$' || file_name =~ '\.js$' || file_name =~ '\.rs$'
     execute ":silent! normal :nohlsearch\<CR>:s/\\/\\*//\<CR>:s/\\*\\///\<CR>:nohlsearch\<CR>=="
   " for .vim files use "
@@ -224,7 +224,7 @@ function! RangeCommentLine()
   " for .cpp or .hpp or .java or .C files use //
   if file_name =~ '\.cpp$' || file_name =~ '\.hpp$' || file_name =~ '\.java$' || file_name =~ '\.php[2345]\?$' || file_name =~ '\.C$'
     execute ":silent! normal :s/\\S/\\/\\/\\0/\<CR>:nohlsearch<CR>=="
-  " for .c or .h or .pc or .css files use /* */
+  " for .c or .h or .pc or .css or rs files use /* */
   elseif file_name =~ '\.c$' || file_name =~ '\.h$' || file_name =~ '\.pc$' || file_name =~ '\.css$' || file_name =~ '\.js$' || file_name =~ '\.rs$'
     " if there are previous comments on this line ie /* ... */
     if stridx(getline("."), "\/\*") != -1 && stridx(getline("."), "\*\/") != -1
@@ -289,7 +289,7 @@ function! RangeUnCommentLine()
   " for .cpp or .hpp or .java files use //
   if file_name =~ '\.cpp$' || file_name =~ '\.hpp$' || file_name =~ '\.java$' || file_name =~ '\.php[2345]\?$' || file_name =~ '\.C$'
     execute ":silent! normal :s/\\/\\///\<CR>:nohlsearch\<CR>=="
-  " for .c or .h or .pc or .css files use /* */
+  " for .c or .h or .pc or .css or rs files use /* */
   elseif file_name =~ '\.c$' || file_name =~ '\.h$' || file_name =~ '\.pc$' || file_name =~ '\.css$' || file_name =~ '\.js$' || file_name =~ '\.rs$'
     execute ":silent! normal :nohlsearch\<CR>:s/\\/\\*//\<CR>:s/\\*\\///\<CR>:nohlsearch\<CR>=="
   " for .vim files use " 
